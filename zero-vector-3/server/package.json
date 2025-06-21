@@ -1,0 +1,85 @@
+{
+  "name": "zero-vector-3-server",
+  "version": "3.0.0",
+  "description": "Zero-Vector-3: AI persona memory management with LangChain and LangGraph integration",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "setup:database": "node scripts/setup-database.js",
+    "setup:postgres": "node scripts/setup-database.js",
+    "setup:infrastructure": "node scripts/setup-infrastructure.js",
+    "migrate:langgraph": "node scripts/migrate-langgraph.js",
+    "generate:api-key": "node scripts/generate-api-key.js",
+    "generate:mcp-key": "node scripts/generate-api-key.js --name \"Zero-Vector-3 MCP Key\" --permissions \"read,write,vectors:read,vectors:write,personas:read,personas:write,workflows:read,workflows:write\" --rate-limit 5000 --expires-in-days 365"
+  },
+  "keywords": [
+    "vector-database",
+    "ai",
+    "embeddings",
+    "similarity-search",
+    "langchain",
+    "langgraph",
+    "agent-orchestration",
+    "persona-memory",
+    "nodejs"
+  ],
+  "author": "Zero-Vector Team",
+  "license": "MIT",
+  "dependencies": {
+    "@langchain/community": "^0.3.47",
+    "@langchain/core": "^0.3.60",
+    "@langchain/langgraph": "^0.3.4",
+    "@langchain/openai": "^0.5.14",
+    "bcrypt": "^5.1.1",
+    "better-sqlite3": "^9.2.2",
+    "compression": "^1.8.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5",
+    "helmet": "^7.1.0",
+    "ioredis": "^5.3.2",
+    "joi": "^17.11.0",
+    "jsonwebtoken": "^9.0.2",
+    "langchain": "^0.3.29",
+    "openai": "^4.20.1",
+    "pg": "^8.11.3",
+    "rate-limit-redis": "^4.2.0",
+    "redis": "^4.6.12",
+    "socket.io": "^4.7.4",
+    "uuid": "^9.0.1",
+    "validator": "^13.11.0",
+    "winston": "^3.11.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.8",
+    "@types/pg": "^8.10.9",
+    "eslint": "^8.55.0",
+    "eslint-config-standard": "^17.1.0",
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.2",
+    "supertest": "^6.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coverageDirectory": "coverage",
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/server.js"
+    ],
+    "testMatch": [
+      "**/tests/**/*.test.js"
+    ]
+  }
+}
